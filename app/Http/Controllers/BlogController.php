@@ -14,7 +14,8 @@ class BlogController extends Controller
      */
     public function index()
     {
-        //
+        $blog= Blog::all();
+        return view('hommy', compact('blog'));
     }
 
     /**
@@ -35,7 +36,14 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,array(
+            'title' => 'required|max:255',
+            'body'  =>'required',
+          ));
+          $blog = new Blog;
+          $blog->title = $request->title;
+          $blog->body=$request->body;
+          $blog->save();
     }
 
     /**

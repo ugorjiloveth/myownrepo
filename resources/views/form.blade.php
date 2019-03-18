@@ -8,8 +8,27 @@
 </head>
 <body>
 @csrf
-<input type = "test" name = "BODY"> <br> <br>
-<input type = "test" name = "TEST"> <br><br>
-<input type = "submit" value = "submit"> 
+
+{!! Form::open(array('route' => 'blog.store', 'method'=>'post')) !!}
+<div class="container">
+<div class="row">
+<div class="col-md-12">
+  <form>
+   <div class="form-group">
+     <label for="exampleInputEmail1">Title</label>
+     <input type="text" class="form-control" name="title" placeholder="Enter title">
+   </div>
+     
+   <div class="form-group">
+      <label for="exampleFormControlTextarea1">Blog Body</label>
+      <textarea class="form-control" name="body"rows="3"></textarea>
+   </div>
+
+   <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+ {!! Form::close() !!}
+</div>
+</div>
+</div>
 </body>
 </html>

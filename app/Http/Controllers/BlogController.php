@@ -65,7 +65,8 @@ class BlogController extends Controller
      */
     public function edit(Blog $blog)
     {
-        //
+        $blog = Blog::find($blog);
+      return view('edit')->withBlog($blog);
     }
 
     /**
@@ -77,7 +78,15 @@ class BlogController extends Controller
      */
     public function update(Request $request, Blog $blog)
     {
-        //
+        $this->validate($request,array(
+            'title'       => 'required|max:255',
+            'body'         =>'required',
+          ));
+          $blog = Blog::find($blog);
+          $blog->title = $request->title;
+          $blog->body=$request->body;
+          $blog->save();
+          return view('/hommy');
     }
 
     /**
